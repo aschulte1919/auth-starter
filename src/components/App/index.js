@@ -17,16 +17,13 @@ const App = () => (
     <div >
     <Grid stackable columns={2} centered>
     <Grid.Column>
-    <Segment textAlign='center' class="ui raised very padded text container">
-    <Header textAlign='center'>COMM HIVE</Header>
+    <Header as='h1' attached='top' textAlign='center'>COMM HIVE</Header>
+    <Segment attached>
       <Navigation />
-      
+      <br></br>
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
       <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-      <Route
-        path={ROUTES.PASSWORD_FORGET}
-        component={PasswordForgetPage}
-      />
+      <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage}/>
       <Route path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       </Segment>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Button, Icon, Input } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
@@ -15,9 +15,10 @@ const Navigation = ({ authUser }) =>
 
 const NavigationAuth = ({ authUser }) => (
   <div>
-      <Link to={ROUTES.HOME}><Button><Icon name='home' />Home</Button></Link>
-      
-      <Link to={ROUTES.ACCOUNT}><Button><Icon name='settings' />Account</Button></Link>
+      <Link to={ROUTES.HOME}><Button fluid><Icon name='home' />Home</Button></Link>
+      <br></br>
+      <Link to={ROUTES.ACCOUNT}><Button fluid><Icon name='settings' />Account</Button></Link>
+      <br></br>
       <SignOutButton />
     </div>
 );

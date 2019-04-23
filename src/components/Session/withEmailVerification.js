@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-import { Button, Icon, Input } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 
 import { withFirebase } from '../Firebase';
 
