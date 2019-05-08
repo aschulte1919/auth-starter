@@ -21,12 +21,6 @@ const INITIAL_STATE = {
       this.onEndChange = this.onEndChange.bind(this);
     }
   
-    onSubmit = event => {
-      console.log(this.uniqueID)
-      console.log(this.state.startDate)
-      console.log(this.state.endDate)
-    };
-  
     onStartChange = (startDate) => {
       this.setState({startDate});
     };
@@ -67,11 +61,10 @@ const INITIAL_STATE = {
                 onDayChange={this.onEndChange}
               />
         </Form.Field>
-        <Button fluid disabled={isInvalid} type="submit">
-          Move to Payment
-        </Button>
         {error && <p>{error.message}</p>}
       </Form>
+      <br></br>
+      <br></br>
       <QRCode
             level="Q"
             style={{ width: 256 }}

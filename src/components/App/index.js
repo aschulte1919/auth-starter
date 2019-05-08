@@ -8,17 +8,20 @@ import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
 import AccountPage from '../Account';
+import Stripe from '../Stripe';
 
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
+import Background from '../../images/backgroundImage.png';
 
 const App = () => (
+  <div style={ sectionStyle }>
   <Router>
     <div >
-    <Grid stackable columns={2} centered>
+    <Grid stackable centered style={ loginStyle }>
     <Grid.Column>
-    <Header as='h1' attached='top' textAlign='center'>COMM HIVE</Header>
-    <Segment attached>
+    <Header as='h1' attached='top'>COMM HIVE</Header>
+    <Segment>
       <Navigation />
       <br></br>
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
@@ -26,11 +29,26 @@ const App = () => (
       <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage}/>
       <Route path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+      <Route path={ROUTES.STRIPE} component={Stripe} />
       </Segment>
       </Grid.Column>
     </Grid>
     </div>
   </Router>
+  </div>
 );
+
+const sectionStyle = {
+  width: "100%",
+  height: "100%",
+  backgroundImage: `url(${Background})`
+};
+
+const loginStyle = {
+  height: "100%",
+  width: "100%",
+  padding: 65,
+  opacity: 0.87
+};
 
 export default withAuthentication(App);

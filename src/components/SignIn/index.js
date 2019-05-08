@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-import { Button, Icon, Input, Form, Header } from 'semantic-ui-react'
+import { Button, Icon, Input, Form, Header, Grid } from 'semantic-ui-react'
 
 import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
@@ -12,15 +12,11 @@ const SignInPage = () => (
   <div>
     <Header textAlign='center'>Sign In</Header>
     <SignInForm />
-    <br></br>
+    <Header as='h4' textAlign='center'>or</Header>
     <SignInGoogle />
-    <br></br>
     <SignInFacebook />
-    <br></br>
     <SignInTwitter />
-    <br></br>
     <PasswordForgetLink />
-    <br></br>
     <SignUpLink />
   </div>
 );
@@ -74,7 +70,8 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <Form onSubmit={this.onSubmit}>
+      <Grid centered >
+      <Form onSubmit={this.onSubmit} style={ formStyles }>
       <Form.Field>
       <label>Email</label>
         <Input
@@ -103,10 +100,10 @@ class SignInFormBase extends Component {
 
         {error && <p>{error.message}</p>}
       </Form>
+      </Grid>
     );
   }
 }
-
 class SignInGoogleBase extends Component {
   constructor(props) {
     super(props);
@@ -143,12 +140,14 @@ class SignInGoogleBase extends Component {
     const { error } = this.state;
 
     return (
-      <Form onSubmit={this.onSubmit}>
-      <Button fluid color='google'>
+      <Grid centered >
+      <Form onSubmit={this.onSubmit} style={ formStyles }>
+      <Button fluid color='red'>
         <Icon name='google' /> Google
       </Button>
         {error && <p>{error.message}</p>}
       </Form>
+      </Grid>
     );
   }
 }
@@ -189,12 +188,14 @@ class SignInFacebookBase extends Component {
     const { error } = this.state;
 
     return (
-      <Form onSubmit={this.onSubmit}>
+      <Grid centered >
+      <Form onSubmit={this.onSubmit} style={ formStyles }>
         <Button fluid color='facebook'>
           <Icon name='facebook' /> Facebook
         </Button>
         {error && <p>{error.message}</p>}
       </Form>
+      </Grid>
     );
   }
 }
@@ -234,12 +235,14 @@ class SignInTwitterBase extends Component {
     const { error } = this.state;
 
     return (
-      <Form onSubmit={this.onSubmit}>
+      <Grid centered >
+      <Form onSubmit={this.onSubmit} style={ formStyles }>
       <Button fluid color='twitter'>
         <Icon name='twitter' /> Twitter
       </Button>
         {error && <p>{error.message}</p>}
       </Form>
+      </Grid>
     );
   }
 }
@@ -263,6 +266,12 @@ const SignInTwitter = compose(
   withRouter,
   withFirebase,
 )(SignInTwitterBase);
+
+const formStyles = {
+  width: '35%',
+  padding: 10,
+  textAlign: 'left'
+};
 
 export default SignInPage;
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Button, Input, Form, Header} from 'semantic-ui-react'
+import { Button, Input, Form, Header, Grid} from 'semantic-ui-react'
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
@@ -10,13 +10,11 @@ const SignUpPage = () => (
   <div>
     <Header textAlign='center'>Sign Up</Header>
     <SignUpForm />
-    <br></br>
-    <SignInGoogle />
+    {/* <SignInGoogle />
     <br></br>
     <SignInFacebook />
     <br></br>
-    <SignInTwitter />
-    <br></br> 
+    <SignInTwitter /> */}
     <SignInLink />
   </div>
 );
@@ -100,7 +98,8 @@ class SignUpFormBase extends Component {
       username === '';
 
     return (
-      <Form onSubmit={this.onSubmit}>
+      <Grid centered>
+      <Form onSubmit={this.onSubmit} style={ formStyles }>
        <Form.Field>
       <label>Full Name</label>
         <Input 
@@ -148,13 +147,19 @@ class SignUpFormBase extends Component {
 
         {error && <p>{error.message}</p>}
       </Form>
+      </Grid>
     );
   }
 }
 const SignInLink = () => (
+  <Grid centered>
+  <br></br>
   <p>
     Already have an account? <Link to={ROUTES.SIGN_IN}>Sign In</Link>
   </p>
+  <br></br>
+  <br></br>
+  </Grid>
 );
 
 
@@ -165,6 +170,12 @@ const SignUpLink = () => (
 );
 
 const SignUpForm = withRouter(withFirebase(SignUpFormBase));
+
+const formStyles = {
+  width: '35%',
+  padding: 10,
+  textAlign: 'left'
+};
 
 export default SignUpPage;
 
